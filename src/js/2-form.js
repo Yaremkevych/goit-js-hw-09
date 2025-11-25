@@ -28,6 +28,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const data = loadFromLS(STORAGE_KEY);
   form.elements.email.value = data?.email || '';
   form.elements.message.value = data?.message || '';
+  formData.email = form.elements.email.value.trim();
+  formData.message = form.elements.message.value.trim();
 });
 
 form.addEventListener('submit', event => {
@@ -46,7 +48,7 @@ form.addEventListener('submit', event => {
   }
 
   form.reset();
-  localStorage.clear();
+  localStorage.removeItem(STORAGE_KEY);
   formData.email = '';
   formData.message = '';
 });
